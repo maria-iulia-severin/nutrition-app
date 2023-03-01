@@ -6,26 +6,11 @@
 <hr>
 <div class="row">
     <div class="col-xs-12">
-        <!-- using ngFor directive to render this part of the code many times, as many as recipes as the array has-->
-        <a 
-          href="#" 
-          class="list-group-item clearfix"
-          *ngFor="let recipe of recipes">
-          <!--here we use string interpolation-->
-            <div class="pull-left">
-                <h4 class="list-group-item-heading">{{recipe.name}}</h4>
-                <p class="list-group-item-text">{{recipe.description}}</p>
-            </div>
-            <!--here we use property binding-->
-            <span class="pull-right">
-                <img 
-                [src]="recipe.imagePath" 
-                alt="{{recipe.name}}" 
-                class="img-responsive" 
-                style="max-height: 50px;">
-            </span>
-        </a>
-        <app-recipe-item></app-recipe-item>
+        <app-recipe-item 
+            *ngFor="let recipeElement of recipes"
+            [recipe]="recipeElement"
+            (recipeSelected)="onRecipeSelected(recipeElement)"
+        ></app-recipe-item>
     </div>
 </div>
 
